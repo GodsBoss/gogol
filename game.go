@@ -46,7 +46,9 @@ func (game *Game) Next() Fields {
 	return diff
 }
 
-// Fields returns the current states of all cells. Must not be changed.
+// Fields returns the current states of all cells. Must not be changed. Will become invalid (i.e. may change) on
+// calling methods on game which changes its cells, like Next() or Override().
+// If you need to store the fields, copy them.
 func (game *Game) Fields() Fields {
 	return game.currentFields
 }
