@@ -1,4 +1,4 @@
-package main
+package conway
 
 func ConwayRule() Rule {
 	return AliveMappingRule{

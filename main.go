@@ -1,25 +1,9 @@
-package main
+package conway
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
-
-func main() {
-	topology := NewRectangularTorus(60, 20)
-	game := NewGame(topology, ConwayRule())
-	miniGlider(topology, game, 0, 0)
-
-	for {
-		fmt.Println(topology.Format(game.Fields(), "0", "."))
-		time.Sleep(250 * time.Millisecond)
-		diff := game.Next()
-		if diff.Empty() {
-			break
-		}
-	}
-}
 
 func viveRandomFields(topology Topology, game *Game, count int) {
 	random := rand.New(rand.NewSource(time.Now().Unix()))
@@ -29,7 +13,7 @@ func viveRandomFields(topology Topology, game *Game, count int) {
 	}
 }
 
-func miniGlider(topology *RectangularTorus, game *Game, c, r int) {
+func MiniGlider(topology *RectangularTorus, game *Game, c, r int) {
 	coords := []struct {
 		X int
 		Y int

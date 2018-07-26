@@ -1,4 +1,4 @@
-package main
+package conway
 
 type Game struct {
 	topology Topology

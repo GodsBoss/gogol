@@ -1,4 +1,4 @@
-package main
+package conway
 
 type Rule interface {
 	NextValue(current CellValue, alive int, dead int) CellValue
