@@ -8,22 +8,7 @@ import (
 
 func main() {
 	topology := NewRectangularTorus(60, 20)
-	conwayRule := AliveMappingRule{
-		Alive: map[int]CellValue{
-			0: Dead,
-			1: Dead,
-			4: Dead,
-			5: Dead,
-			6: Dead,
-			7: Dead,
-			8: Dead,
-			9: Dead,
-		},
-		Dead: map[int]CellValue{
-			3: Alive,
-		},
-	}
-	game := NewGame(topology, conwayRule)
+	game := NewGame(topology, ConwayRule())
 	// viveRandomFields(topology, game, 100)
 	miniGlider(topology, game, 0, 0)
 
