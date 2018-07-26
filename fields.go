@@ -10,6 +10,13 @@ type FieldID int
 // FieldIDs represents a bunch of field indexes.
 type FieldIDs []FieldID
 
+// Copy copies the ids.
+func (ids FieldIDs) Copy() FieldIDs {
+	cp := make(FieldIDs, len(ids))
+	copy(cp, ids)
+	return cp
+}
+
 // Count returns both the alive and dead cell counts.
 func (ids FieldIDs) Count(fields Fields) (alive, dead int) {
 	return ids.AliveCount(fields), ids.DeadCount(fields)
@@ -37,6 +44,15 @@ func countFieldCellValues(value CellValue, ids FieldIDs, fields Fields) int {
 
 // Fields maps field indexes to cell values.
 type Fields map[FieldID]CellValue
+
+// Copy creates a copy of f.
+func (f Fields) Copy() Fields {
+	cp := make(Fields)
+	for k := range f {
+		cp[k] = f[k]
+	}
+	return cp
+}
 
 // Empty checks wether f contains nothing.
 func (f Fields) Empty() bool {
