@@ -1,5 +1,6 @@
 package gogol
 
+// ConwayRule returns the classic Conway Game of Life rule.
 func ConwayRule() Rule {
 	return AliveMappingRule{
 		Alive: map[int]CellValue{

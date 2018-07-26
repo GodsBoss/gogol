@@ -1,5 +1,8 @@
 package gogol
 
+// Game is a Game of Life instance. It contains a topology, a rule and the
+// current fields.
+// Must be instantiated with NewGame, the zero value is useless.
 type Game struct {
 	topology Topology
 	rule     Rule
@@ -8,6 +11,8 @@ type Game struct {
 	nextFields    Fields
 }
 
+// NewGame creates a new game of life with the given topology and rule. Sets all
+// cell values to Dead.
 func NewGame(topology Topology, rule Rule) *Game {
 	game := &Game{
 		topology:      topology,
@@ -41,10 +46,12 @@ func (game *Game) Next() Fields {
 	return diff
 }
 
+// Fields returns the current states of all cells. Must not be changed.
 func (game *Game) Fields() Fields {
 	return game.currentFields
 }
 
+// Override sets the cell at the given index to a new value.
 func (game *Game) Override(id FieldID, value CellValue) {
 	game.currentFields.Set(id, value)
 }
