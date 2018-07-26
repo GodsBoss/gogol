@@ -9,7 +9,6 @@ import (
 func main() {
 	topology := NewRectangularTorus(60, 20)
 	game := NewGame(topology, ConwayRule())
-	// viveRandomFields(topology, game, 100)
 	miniGlider(topology, game, 0, 0)
 
 	for {
