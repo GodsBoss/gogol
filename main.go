@@ -1,4 +1,4 @@
-package conway
+package gogol
 
 import (
 	"math/rand"

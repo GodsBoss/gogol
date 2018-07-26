@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/GodsBoss/conway"
-	"github.com/GodsBoss/conway/topologies/rectorus"
+	"github.com/GodsBoss/gogol"
+	"github.com/GodsBoss/gogol/topologies/rectorus"
 
 	"fmt"
 	"time"
@@ -10,7 +10,7 @@ import (
 
 func main() {
 	topology := rectorus.NewRectangularTorus(60, 20)
-	game := conway.NewGame(topology, conway.ConwayRule())
+	game := gogol.NewGame(topology, gogol.ConwayRule())
 	rectorus.MiniGlider(topology, game, 0, 0)
 
 	for {

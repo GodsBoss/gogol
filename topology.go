@@ -1,4 +1,4 @@
-package conway
+package gogol
 
 // Topology defines how the fields are connected with each other.
 type Topology interface {

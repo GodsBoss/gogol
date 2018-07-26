@@ -1,4 +1,4 @@
-package conway
+package gogol
 
 type Game struct {
 	topology Topology

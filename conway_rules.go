@@ -1,4 +1,4 @@
-package conway
+package gogol
 
 func ConwayRule() Rule {
 	return AliveMappingRule{

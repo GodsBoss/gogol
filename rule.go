@@ -1,4 +1,4 @@
-package conway
+package gogol
 
 type Rule interface {
 	NextValue(current CellValue, alive int, dead int) CellValue

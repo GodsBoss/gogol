@@ -1,7 +1,7 @@
 package rectorus
 
 import (
-	"github.com/GodsBoss/conway"
+	"github.com/GodsBoss/gogol"
 
 	"strings"
 )
@@ -26,18 +26,18 @@ func (torus Topology) Height() int {
 	return torus.height
 }
 
-func (torus *Topology) ID(column int, row int) conway.FieldID {
-	return conway.FieldID(row*torus.width + column)
+func (torus *Topology) ID(column int, row int) gogol.FieldID {
+	return gogol.FieldID(row*torus.width + column)
 }
 
-func (torus *Topology) columnRow(id conway.FieldID) (column, row int) {
+func (torus *Topology) columnRow(id gogol.FieldID) (column, row int) {
 	column = int(id) % torus.width
 	row = (int(id) - column) / torus.width
 	return column, row
 }
 
-func (torus *Topology) All() conway.FieldIDs {
-	ids := make(conway.FieldIDs, 0, torus.width*torus.height)
+func (torus *Topology) All() gogol.FieldIDs {
+	ids := make(gogol.FieldIDs, 0, torus.width*torus.height)
 	for column := 0; column < torus.width; column++ {
 		for row := 0; row < torus.height; row++ {
 			ids = append(ids, torus.ID(column, row))
@@ -46,8 +46,8 @@ func (torus *Topology) All() conway.FieldIDs {
 	return ids
 }
 
-func (torus *Topology) Neighbours(id conway.FieldID) conway.FieldIDs {
-	ids := conway.FieldIDs{}
+func (torus *Topology) Neighbours(id gogol.FieldID) gogol.FieldIDs {
+	ids := gogol.FieldIDs{}
 	centerColumn, centerRow := torus.columnRow(id)
 	for columnOffset := -1; columnOffset <= 1; columnOffset++ {
 		for rowOffset := -1; rowOffset <= 1; rowOffset++ {
@@ -62,10 +62,10 @@ func (torus *Topology) Neighbours(id conway.FieldID) conway.FieldIDs {
 	return ids
 }
 
-func (torus *Topology) Format(fields conway.Fields, alive, dead string) string {
-	format := map[conway.CellValue]string{
-		conway.Dead:  dead,
-		conway.Alive: alive,
+func (torus *Topology) Format(fields gogol.Fields, alive, dead string) string {
+	format := map[gogol.CellValue]string{
+		gogol.Dead:  dead,
+		gogol.Alive: alive,
 	}
 	parts := make([]string, 0, torus.height*(torus.width+1))
 	for row := 0; row < torus.height; row++ {
@@ -77,7 +77,7 @@ func (torus *Topology) Format(fields conway.Fields, alive, dead string) string {
 	return strings.Join(parts, "")
 }
 
-func MiniGlider(topology *Topology, game *conway.Game, c, r int) {
+func MiniGlider(topology *Topology, game *gogol.Game, c, r int) {
 	coords := []struct {
 		X int
 		Y int
@@ -93,6 +93,6 @@ func MiniGlider(topology *Topology, game *conway.Game, c, r int) {
 		{X: c + 3, Y: r + 3},
 	}
 	for i := range coords {
-		game.Override(topology.ID(coords[i].X, coords[i].Y), conway.Alive)
+		game.Override(topology.ID(coords[i].X, coords[i].Y), gogol.Alive)
 	}
 }
