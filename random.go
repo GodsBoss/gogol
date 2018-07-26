@@ -6,14 +6,6 @@ import (
 	"time"
 )
 
-func viveRandomFields(topology Topology, game *Game, count int) {
-	random := rand.New(rand.NewSource(time.Now().Unix()))
-	all := topology.All()
-	for i := 0; i < count; i++ {
-		game.Override(all[random.Intn(len(all))], Alive)
-	}
-}
-
 // FillWithRandomFields fills a game with cells randomly set to alive or dead with
 // a certain distribution.
 func FillWithRandomFields(game *Game, aliveShare float64) {
